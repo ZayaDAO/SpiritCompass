@@ -142,33 +142,6 @@ function App() {
   return (
     <div>
       <div class="overlay"></div>
-
-      <div class="text">
-        <div class="wrapper">
-          <div id="L" class="letter">M</div>
-          <div class="shadow">M</div>
-        </div>
-        <div class="wrapper">
-          <div id="I" class="letter">A</div>
-          <div class="shadow">A</div>
-        </div>
-        <div class="wrapper">
-          <div id="G" class="letter">T</div>
-          <div class="shadow">T</div>
-        </div>
-        <div class="wrapper">
-          <div id="H" class="letter">T</div>
-          <div class="shadow">T</div>
-        </div>
-        <div class="wrapper">
-          <div id="H" class="letter">E</div>
-          <div class="shadow">E</div>
-        </div>
-        <div class="wrapper">
-          <div id="H" class="letter">R</div>
-          <div class="shadow">R</div>
-        </div>
-      </div>
        <Orb/>
       <div className="pallette">
         <div className='color' onClick={() => clicked(1)} style={{background: '#716BC1'}}></div>
