@@ -67,7 +67,7 @@ function Orb() {
     let geometry = new THREE.SphereGeometry(.8, 128, 128);
 
     let material = new THREE.MeshPhongMaterial({
-        color: 0xB0D,
+        color: 0xC0FFEE,
         shininess: 1000
     });
 
@@ -141,7 +141,6 @@ function App() {
   }
   return (
     <div>
-      <div class="overlay"></div>
        <Orb/>
       <div className="pallette">
         <div className='color' onClick={() => clicked(1)} style={{background: '#716BC1'}}></div>
