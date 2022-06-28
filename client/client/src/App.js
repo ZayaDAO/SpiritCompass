@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import * as $ from 'jquery'
 import SimplexNoise from 'simplex-noise';
+import WalletCard from './WalletCard'
 // const require('./three.js')
 const THREE = window.THREE;
 const ethers = require('ethers');
@@ -17,7 +18,7 @@ let abi = [
 ];
 
 // Connect to the network
-let provider = ethers.getDefaultProvider();
+// let provider = ethers.getDefaultProvider();
 
 // The address from the above deployment example
 let contractAddress = "0x2bD9aAa2953F988153c8629926D22A6a5F69b14E";
@@ -127,21 +128,10 @@ function Orb() {
   );
 }
 
-function App() {
-
-  const clicked = async (num) => {
-    console.log(num)
-    // We connect to the Contract using a Provider, so we will only
-    // have read-only access to the Contract
-    let contract = new ethers.Contract(contractAddress, abi, provider);
-
-    let tx = await contract.scry(num)
-    console.log(tx)
-
-  }
-  return (
-    <div>
-       <Orb/>
+function Zaya() {
+  return(
+    <>
+      <Orb/>
       <div className="pallette">
         <div className='color' onClick={() => clicked(1)} style={{background: '#716BC1'}}></div>
         <div className='color' onClick={() => clicked(2)} style={{background: '#3895CC'}}></div>
@@ -151,6 +141,30 @@ function App() {
         <div className='color' onClick={() => clicked(6)} style={{background: '#E9832B'}}></div>
         <div className='color' onClick={() => clicked(7)} style={{background: '#F07780'}}></div>
     </div>
+    </>
+  )
+}
+
+function App() {
+  const [loggedIn, setLoggedIn] = useState(false)
+  const clicked = async (num) => {
+    console.log(num)
+    // We connect to the Contract using a Provider, so we will only
+    // have read-only access to the Contract
+    // let contract = new ethers.Contract(contractAddress, abi, provider);
+
+    // let tx = await contract.scry(num)
+    // console.log(tx)
+
+  }
+  return (
+    <div>
+       {
+         !loggedIn ? <WalletCard /> : <Zaya />log
+       }
+       <div>
+         <WalletCard />
+       </div>
     </div>
   );
 }
