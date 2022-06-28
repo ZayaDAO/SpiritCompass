@@ -32,21 +32,19 @@ const WalletCard = (props) => {
     }
     return (
         <div className="WalletCard">
-            <h3 className="h4">
-                Welcome to a decentralized Application
-            </h3>
             <Button
+                className='card-button'
                 style={{ background: defaultAccount ? "#A5CC82" : "white" }}
                 onClick={connectwalletHandler}>
-                {ENS ? "Connected!!" : "Connect"}
+                <p className='card-status'>{ENS ? "Connected!!" : "Wallet"}</p>
             </Button>
             <div className="displayAccount">
                 <h4 className="walletAddress">{ENS}</h4>
-                <div className="balanceDisplay">
+                {/*<div className="balanceDisplay">
                     <h3>
                         Wallet Amount: {userBalance}
                     </h3>
-                </div>
+                </div>*/}
             </div>
             {errorMessage}
         </div>

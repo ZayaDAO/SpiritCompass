@@ -1,6 +1,6 @@
 // TODO: Add ENS Name Resolver
-import react, {useState, useEffect} from 'react'
-import Card from './Card'
+import React, {useState, useEffect} from 'react'
+import Card from './Card.js'
 
 const Dex = () => {
 	const [lightMode, setLightMode] = useState(false)
@@ -17,3 +17,6 @@ const Dex = () => {
 		</>
 	)
 }
+
+export default Dex;
+
