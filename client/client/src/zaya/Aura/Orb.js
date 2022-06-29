@@ -21,11 +21,17 @@ const Orb = (props) => {
     .then((data) => {
         console.log(data)
         // get a count of number of dates between a range
-        //data.data.items.forEach((tx) => {
-        //    if(tx.block_height < current_block){
-        //    count++
-        //}
-        //})
+        let count = 0;
+        let current_block = 15007091;
+        data.data.items.forEach((tx) => {
+            if(tx.block_height < current_block && (tx.block_height > current_block - 72000)){
+                count++
+            }
+        })
+        console.log('count')
+        console.log(count)
+        ath = 6
+        last = count
         // ath = data.market_data.ath.usd
         // last = data.tickers[10].last
         // console.log(last/ath)
@@ -39,19 +45,19 @@ const Orb = (props) => {
 
           let ath = 0
     let last = 0;
-    fetch('https://api.coingecko.com/api/v3/coins/ethereum')
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-        console.log(data)
-        ath = data.market_data.ath.usd
-        // last = data.tickers[10].last
-        last = 1670
-        console.log(last/ath)
-        console.log(last)
-        console.log(ath)
-    })
+    // fetch('https://api.coingecko.com/api/v3/coins/ethereum')
+    // .then((response) => {
+    //   return response.json();
+    // })
+    // .then((data) => {
+    //     console.log(data)
+    //     ath = data.market_data.ath.usd
+    //     // last = data.tickers[10].last
+    //     last = 1670
+    //     console.log(last/ath)
+    //     console.log(last)
+    //     console.log(ath)
+    // })
 
       let speedSlider = 13,
         spikesSlider = 2,
@@ -113,7 +119,12 @@ const Orb = (props) => {
 
         let time = performance.now() * 0.00001 * speedSlider * Math.pow(processingSlider, 3)
             // spikes = velocity * processingSlider;
-        let spikes = (props.semaphore) ? 0 : 2*(last/ath) * processingSlider;
+        let spikes;
+        if(props.semaphore){
+            spikes = 0;
+        }else{
+            spikes = (last/ath) * processingSlider;
+        }
         console.log(spikes)
         if(spikes){
 
