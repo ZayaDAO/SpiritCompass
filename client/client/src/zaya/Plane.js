@@ -5,6 +5,8 @@ const Plane = () => {
 	return(
 		<>
 			<img className="present" src={img} width='60%' />
+			<p className="hue">What color do you resonate with right now?</p>
+			<p className="hue">Choose color by clicking on the bar</p>
 		</>
 	)
 }

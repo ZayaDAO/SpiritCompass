@@ -47,7 +47,7 @@ canvas {
 
 
 body {
-  /*margin: 5em;*/
+  margin: 5em;
   font-family: Myriad Pro;
 }
 .timeline {
@@ -395,18 +395,19 @@ body {
 }
 
 .color {
-  width: 20px;
+  width: 70px;
   height: 20px;
   border: 1px solid #000;
   margin: 10px;
 }
 
 .pallette {
-  padding-left: 7vw;
+  padding-left: 22vw;
   width: 1200px;
   display: grid;
   height: calc(10vw - 5px);  /*instead playing around with grid gap gap */
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  margin-left: 360px;
 }
 
 .color:hover {
@@ -432,7 +433,7 @@ body {
 }
 
 body {
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -512,6 +513,7 @@ body .dribbble img {
 
 .card-status {
   color: white;
+  font-size: 10px;
 }
 
 /*MuiSlider-rail css-14pt78w-MuiSlider-rail*/
@@ -528,4 +530,51 @@ span.MuiSlider-thumbColorPrimary.MuiSlider-thumbSizeMedium.MuiSlider-thumb.css-e
 .sides{
   width: 30%;
   margin: auto;
+}
+
+[slide-in-from] {
+  opacity: 0;
+  transform: translateY(var(--translateY,0)) translateX(var(--translateX, 0));
+  animation: slideInFrom var(--sif-duration, 250ms) var(--sif-timing, ease-out) var(--sif-delay, 0ms) forwards;
+}
+[slide-in-from ^= "top"]    { --translateY: -100% }
+[slide-in-from ^= "bottom"] { --translateY:  100% }
+[slide-in-from $= "left"]   { --translateX: -100% }
+[slide-in-from $= "right"]  { --translateX:  100% }
+
+@keyframes slideInFrom{ to {  transform: unset; opacity: unset } }
+
+/*div { 
+  padding: 0.5rem 1rem; 
+  background-color: var(--clr); 
+  color: black;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0.25rem 0.25rem 0.25rem rgb(0 0 0 / .5)
+}*/
+div:nth-of-type(1){ --clr: #78C5D5 }
+div:nth-of-type(2){ --clr: #459BA8 }
+div:nth-of-type(3){ --clr: #79C268 }
+div:nth-of-type(4){ --clr: #C5D747 }
+div:nth-of-type(5){ --clr: #F5D63D }
+div:nth-of-type(6){ --clr: #F18C32 }
+div:nth-of-type(7){ --clr: #E868A1 }
+div:nth-of-type(8){ --clr: #BF63A6 }
+
+.prompt {
+  text-align: center;
+}
+
+.todo-svg {
+  margin: auto;
+  display: block;
+}
+.hue{
+  text-align: center;
+  font-size: 19px;
+}
+.spirit {
+  margin-top: -100px;
+  text-align: center;
 }

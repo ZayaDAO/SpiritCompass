@@ -8,6 +8,35 @@ const Orb = (props) => {
   useEffect(() => {
     //mount orb
     if(!mounted){
+
+    let velocity = 0
+
+
+    // https://api.covalenthq.com/v1/1/address/0xa79E63e78Eec28741e711f89A672A4C40876Ebf3/transactions_v2/?key=ckey_docs
+    fetch('https://api.covalenthq.com/v1/1/address/0xa79E63e78Eec28741e711f89A672A4C40876Ebf3/transactions_v2/?key=ckey_31c7df9cfa0b48978c69b999d4d')
+    // fetch('https://api.coingecko.com/api/v3/coins/ethereum')
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+        console.log(data)
+        // get a count of number of dates between a range
+        //data.data.items.forEach((tx) => {
+        //    if(tx.block_height < current_block){
+        //    count++
+        //}
+        //})
+        // ath = data.market_data.ath.usd
+        // last = data.tickers[10].last
+        // console.log(last/ath)
+        // console.log(last)
+        // console.log(ath)
+    }).catch((e) => {
+        console.log(e)
+    })
+
+
+
           let ath = 0
     let last = 0;
     fetch('https://api.coingecko.com/api/v3/coins/ethereum')
@@ -17,7 +46,8 @@ const Orb = (props) => {
     .then((data) => {
         console.log(data)
         ath = data.market_data.ath.usd
-        last = data.tickers[10].last
+        // last = data.tickers[10].last
+        last = 1670
         console.log(last/ath)
         console.log(last)
         console.log(ath)
@@ -47,8 +77,18 @@ const Orb = (props) => {
 
     let geometry = new THREE.SphereGeometry(.8, 128, 128);
 
+
+    function componentToHex(c) {
+      var hex = c.toString(16);
+      return hex.length == 1 ? "0" + hex : hex;
+    }
+
+    function rgbToHex(r, g, b) {
+      return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+
     let material = new THREE.MeshPhongMaterial({
-        color: 0xC0FFEE,
+        color: !props.semaphore ? rgbToHex(15,213,64) : 0xC0FFEE,//0xC0FFEE,
         shininess: 1000
     });
 
@@ -71,9 +111,10 @@ const Orb = (props) => {
     console.log(sphere)
     let update = () => {
 
-        let time = performance.now() * 0.00001 * speedSlider * Math.pow(processingSlider, 3),
-            spikes = 2*(last/ath) * processingSlider;
-
+        let time = performance.now() * 0.00001 * speedSlider * Math.pow(processingSlider, 3)
+            // spikes = velocity * processingSlider;
+        let spikes = (props.semaphore) ? 0 : 2*(last/ath) * processingSlider;
+        console.log(spikes)
         if(spikes){
 
         for(let i = 0; i < sphere.geometry.vertices.length; i++) {
