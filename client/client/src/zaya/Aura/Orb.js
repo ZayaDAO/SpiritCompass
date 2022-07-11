@@ -94,7 +94,7 @@ const Orb = (props) => {
     }
 
     let material = new THREE.MeshPhongMaterial({
-        color: !props.semaphore ? rgbToHex(15,213,64) : 0xC0FFEE,//0xC0FFEE,
+        color: !props.semaphore ? rgbToHex(12,245,87) : 0xC0FFEE,//0xC0FFEE,
         shininess: 1000
     });
 
